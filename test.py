@@ -6,8 +6,10 @@ from os.path import isfile, join
 import pandas as pd
 
 # mypath = os.path.dirname(os.path.abspath(__file__))
+
+# directory where the python script is
 dirpath = os.path.dirname(os.path.realpath(__file__))
-print(dirpath)
+print(listdir(dirpath))
 
 onlyfiles = [join(dirpath, f) for f in listdir(dirpath) if isfile(join(dirpath, f)) and ('mighty' in f.lower() or 'apptopia' in f.lower())] #and f != os.path.basename(__file__)
 
@@ -16,10 +18,11 @@ onlyfiles = set(onlyfiles) - set([os.path.abspath(__file__)])
 apptopia_df_array = []
 mighty_df_array = []
 
-print(onlyfiles, os.path.abspath(__file__))
+print('onlyfiles: ', onlyfiles)
+print('os.path.abspath(__file__):', os.path.abspath(__file__))
 
 for file in onlyfiles:
-    print(file)
+    #print(file)
     f = file.lower()
     temp_df = pd.read_csv(file)
     
